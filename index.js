@@ -10,7 +10,7 @@ app.use(
     // LOKAL
     // origin: "http://localhost:3000",
     // CROSS ORIGIN
-    origin: "https://nutech-app.herokuapp.com/",
+    origin: "https://nutech-app.herokuapp.com",
     credentials: true,
   })
 );
