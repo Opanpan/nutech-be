@@ -6,4 +6,12 @@ const addItemAction = (req, res) => {
     .catch((error) => res.status(409).send(error));
 };
 
-module.exports = { addItemAction };
+const getUserItemAction = (req, res) => {
+  Item.findAll({
+    where: { user_id: req.query.user_id },
+  })
+    .then((data) => res.status(201).send(data))
+    .catch((error) => res.status(409).send(error));
+};
+
+module.exports = { addItemAction, getUserItemAction };
