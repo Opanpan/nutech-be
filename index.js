@@ -7,7 +7,10 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "https://nutech-app.herokuapp.com",
+    // LOKAL
+    // origin: "http://localhost:3000",
+    // CROSS ORIGIN
+    origin: "https://nutech-app.herokuapp.com/",
     credentials: true,
   })
 );
