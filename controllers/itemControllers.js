@@ -1,0 +1,9 @@
+const { Item } = require("../models");
+
+const addItemAction = (req, res) => {
+  Item.addItem(req.body)
+    .then((message) => res.status(201).send(message))
+    .catch((error) => res.status(409).send(error));
+};
+
+module.exports = { addItemAction };
