@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static addItem = async ({
       name,
       urlImg,
-      purchasePrice,
-      sellingPrice,
+      purchase_price,
+      selling_price,
       quantity,
       userId,
     }) => {
@@ -27,11 +27,25 @@ module.exports = (sequelize, DataTypes) => {
           this.create({
             name,
             url_img: urlImg,
-            purchase_price: purchasePrice,
-            selling_price: sellingPrice,
+            purchase_price,
+            selling_price,
             quantity,
             user_id: userId,
           })
+        );
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    };
+
+    static deleteItem = async ({ name, user_id }) => {
+      try {
+        const item = await this.findOne({
+          where: { name, user_id },
+        });
+
+        return Promise.resolve("Barang Dihapus").then(
+          this.destroy({ where: { name, user_id } })
         );
       } catch (error) {
         return Promise.reject(error);
