@@ -14,4 +14,10 @@ const getUserItemAction = (req, res) => {
     .catch((error) => res.status(409).send(error));
 };
 
-module.exports = { addItemAction, getUserItemAction };
+const removeItemAction = (req, res) => {
+  Item.deleteItem(req.body)
+    .then((data) => res.status(201).send(data))
+    .catch((error) => res.status(401).send(error));
+};
+
+module.exports = { addItemAction, getUserItemAction, removeItemAction };
